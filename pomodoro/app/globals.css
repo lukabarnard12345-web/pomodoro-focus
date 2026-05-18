@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ring-study: #b5697a;
+    --ring-short: #c49278;
+    --ring-long: #a67a66;
+  }
+
+  body {
+    @apply bg-surface text-white antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-surface-3 rounded-full; }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(30, 18, 20, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 200, 200, 0.07);
+  }
+
+  .glass-light {
+    background: rgba(39, 24, 27, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 200, 200, 0.09);
+  }
+
+  .ring-track {
+    stroke: rgba(255, 255, 255, 0.06);
+  }
+}

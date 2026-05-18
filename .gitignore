@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+pomodoro/node_modules/
+
+# Next.js build output
+pomodoro/.next/
+pomodoro/out/
+
+# Environment variables — never commit secrets
+.env
+.env.local
+.env*.local
+pomodoro/.env
+pomodoro/.env.local
+pomodoro/.env*.local
+
+# Claude Code internals
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
