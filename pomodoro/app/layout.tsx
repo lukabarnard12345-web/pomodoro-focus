@@ -2,16 +2,16 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Providers } from './providers'
 
-const URL = 'https://pomodoro-focus-lyart.vercel.app'
+const SITE_URL = 'https://pomodoro-focus-lyart.vercel.app'
 
 export const metadata: Metadata = {
   title: 'Pomodoro Focus',
   description: 'Deep work timer with Spotify and Google Calendar integration.',
-  metadataBase: new URL(URL),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: 'Pomodoro Focus',
     description: 'Deep work timer with Spotify and Google Calendar integration.',
-    url: URL,
+    url: SITE_URL,
     siteName: 'Pomodoro Focus',
     type: 'website',
   },
