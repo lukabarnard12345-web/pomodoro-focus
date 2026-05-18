@@ -20,21 +20,24 @@ function getOAuth2Client(accessToken: string) {
   return auth
 }
 
-export async function getTodaysEvents(accessToken: string): Promise<CalendarEvent[]> {
+export async function getEventsForMonth(
+  accessToken: string,
+  year: number,
+  month: number, // 1-indexed
+): Promise<CalendarEvent[]> {
   const auth = getOAuth2Client(accessToken)
   const calendar = google.calendar({ version: 'v3', auth })
 
-  const now = new Date()
-  const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-  const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1)
+  const startOfMonth = new Date(year, month - 1, 1)
+  const endOfMonth = new Date(year, month, 1)
 
   const res = await calendar.events.list({
     calendarId: 'primary',
-    timeMin: startOfDay.toISOString(),
-    timeMax: endOfDay.toISOString(),
+    timeMin: startOfMonth.toISOString(),
+    timeMax: endOfMonth.toISOString(),
     singleEvents: true,
     orderBy: 'startTime',
-    maxResults: 20,
+    maxResults: 250,
   })
 
   return (res.data.items ?? []).map((item) => ({
@@ -44,6 +47,15 @@ export async function getTodaysEvents(accessToken: string): Promise<CalendarEven
     end: item.end?.dateTime ?? item.end?.date ?? '',
     color: item.colorId ?? undefined,
   }))
+}
+
+export async function deleteCalendarEvent(
+  accessToken: string,
+  eventId: string,
+): Promise<void> {
+  const auth = getOAuth2Client(accessToken)
+  const calendar = google.calendar({ version: 'v3', auth })
+  await calendar.events.delete({ calendarId: 'primary', eventId })
 }
 
 export async function createStudyBlock(
@@ -62,7 +74,7 @@ export async function createStudyBlock(
       summary: opts.title,
       start: { dateTime: start.toISOString() },
       end: { dateTime: end.toISOString() },
-      colorId: '9', // blueberry — distinct from other events
+      colorId: '9',
       description: 'Created by Pomodoro Focus',
     },
   })

@@ -86,28 +86,18 @@ export default function Home() {
       {/* Main layout */}
       <div className="relative z-10 flex min-h-screen w-full flex-col">
         {/* Top bar */}
-        <header className="flex items-center justify-between px-4 py-2 md:px-6">
+        <header className="flex items-center justify-between border-b border-white/[0.04] bg-surface/60 px-4 py-2 backdrop-blur-sm md:px-6">
           <div className="flex items-center gap-0.5">
-            <IconButton
-              label="Tasks"
-              showLabel
-              active={activePanel === 'tasks'}
-              onClick={() => togglePanel('tasks')}
-            >
+            <IconButton label="Tasks" showLabel active={activePanel === 'tasks'} onClick={() => togglePanel('tasks')}>
               <TasksIcon />
             </IconButton>
-            <IconButton
-              label="Calendar"
-              showLabel
-              active={activePanel === 'calendar'}
-              onClick={() => togglePanel('calendar')}
-            >
+            <IconButton label="Calendar" showLabel active={activePanel === 'calendar'} onClick={() => togglePanel('calendar')}>
               <CalendarIcon />
             </IconButton>
           </div>
 
           <motion.span
-            className="hidden text-xs font-medium tracking-widest text-white/30 uppercase md:block"
+            className="hidden text-[11px] font-medium tracking-[0.2em] text-white/20 uppercase md:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -115,12 +105,7 @@ export default function Home() {
           </motion.span>
 
           <div className="flex items-center gap-0.5">
-            <IconButton
-              label="Music"
-              showLabel
-              active={activePanel === 'spotify'}
-              onClick={() => togglePanel('spotify')}
-            >
+            <IconButton label="Music" showLabel active={activePanel === 'spotify'} onClick={() => togglePanel('spotify')}>
               <SpotifyIcon />
             </IconButton>
             <IconButton label="Background" showLabel onClick={() => setShowBackground(true)}>
@@ -166,7 +151,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
-              className="text-sm font-medium tracking-wider text-white/50 uppercase"
+              className="text-[11px] font-semibold tracking-[0.18em] text-white/35 uppercase"
             >
               {PHASE_LABEL[phase]}
             </motion.p>
@@ -231,7 +216,7 @@ export default function Home() {
         isOpen={activePanel === 'calendar'}
         onClose={() => setActivePanel(null)}
         side="left"
-        width={300}
+        width={360}
       >
         <CalendarPanel />
       </Sidebar>
