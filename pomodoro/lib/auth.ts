@@ -87,6 +87,7 @@ export const authOptions: NextAuthOptions = {
         params: {
           scope:
             'streaming user-read-email user-read-private user-read-playback-state user-modify-playback-state user-read-currently-playing',
+          redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/spotify`,
         },
       },
     }),
@@ -99,6 +100,7 @@ export const authOptions: NextAuthOptions = {
             'openid email profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/calendar.events',
           access_type: 'offline',
           prompt: 'consent',
+          redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/google`,
         },
       },
     }),
