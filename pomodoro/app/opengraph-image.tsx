@@ -48,8 +48,6 @@ export default function OgImage() {
             />
             <circle cx="130" cy="130" r="22" fill="#b5697a" opacity="0.85" />
             <circle cx="130" cy="130" r="11" fill="#d49aa6" />
-            {/* Timer text */}
-            <text x="130" y="228" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="18" fontFamily="system-ui" letterSpacing="4">25:00</text>
           </svg>
         </div>
 
