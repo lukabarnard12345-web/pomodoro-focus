@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
-import { getPlaybackState, transferPlayback, setVolume, skipNext, skipPrevious } from '@/lib/spotify'
+import { getPlaybackState, transferPlayback, startPlayback, setVolume, skipNext, skipPrevious } from '@/lib/spotify'
 
 export async function GET() {
   const session = await getServerSession(authOptions)
@@ -43,7 +43,9 @@ export async function POST(req: NextRequest) {
         break
       case 'play':
         if (!deviceId) return NextResponse.json({ error: 'Missing deviceId' }, { status: 400 })
-        await transferPlayback(session.spotifyToken, deviceId, true)
+        await transferPlayback(session.spotifyToken, deviceId)
+        await new Promise((r) => setTimeout(r, 500))
+        await startPlayback(session.spotifyToken, deviceId)
         break
       default:
         return NextResponse.json({ error: 'Unknown action' }, { status: 400 })

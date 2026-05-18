@@ -34,6 +34,13 @@ export async function setVolume(token: string, volumePercent: number): Promise<v
   })
 }
 
+export async function startPlayback(token: string, deviceId: string): Promise<void> {
+  await spotifyFetch(`/me/player/play?device_id=${deviceId}`, token, {
+    method: 'PUT',
+    body: '{}',
+  })
+}
+
 export async function skipNext(token: string): Promise<void> {
   await spotifyFetch('/me/player/next', token, { method: 'POST' })
 }
