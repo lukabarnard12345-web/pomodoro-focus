@@ -16,38 +16,46 @@ export default function OgImage() {
           justifyContent: 'center',
           fontFamily: 'system-ui, sans-serif',
           position: 'relative',
-          overflow: 'hidden',
         }}
       >
-        {/* Background glow */}
+        {/* Glow */}
         <div
           style={{
             position: 'absolute',
-            width: 700,
-            height: 700,
+            width: 600,
+            height: 600,
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(181,105,122,0.12) 0%, transparent 65%)',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            background: 'radial-gradient(circle, rgba(181,105,122,0.14) 0%, transparent 65%)',
+            top: 15,
+            left: 300,
+            display: 'flex',
           }}
         />
 
-        {/* Left — timer ring */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 520, flexShrink: 0 }}>
-          <svg width="260" height="260" viewBox="0 0 260 260" fill="none">
-            <circle cx="130" cy="130" r="110" stroke="rgba(255,255,255,0.06)" strokeWidth="14" />
+        {/* Left — ring */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 460,
+            flexShrink: 0,
+          }}
+        >
+          <svg width="240" height="240" viewBox="0 0 240 240">
+            <circle cx="120" cy="120" r="100" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="12" />
             <circle
-              cx="130" cy="130" r="110"
+              cx="120" cy="120" r="100"
+              fill="none"
               stroke="#b5697a"
-              strokeWidth="14"
+              strokeWidth="12"
               strokeLinecap="round"
-              strokeDasharray="691.1"
-              strokeDashoffset="173"
-              transform="rotate(-90 130 130)"
+              strokeDasharray="628"
+              strokeDashoffset="157"
+              transform="rotate(-90 120 120)"
             />
-            <circle cx="130" cy="130" r="22" fill="#b5697a" opacity="0.85" />
-            <circle cx="130" cy="130" r="11" fill="#d49aa6" />
+            <circle cx="120" cy="120" r="18" fill="#b5697a" opacity="0.85" />
+            <circle cx="120" cy="120" r="9" fill="#d49aa6" />
           </svg>
         </div>
 
@@ -56,53 +64,57 @@ export default function OgImage() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 16,
+            gap: 0,
             paddingRight: 80,
+            flex: 1,
           }}
         >
           <div
             style={{
+              display: 'flex',
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: '0.22em',
-              color: 'rgba(181,105,122,0.8)',
+              color: 'rgba(181,105,122,0.85)',
               textTransform: 'uppercase',
+              marginBottom: 16,
             }}
           >
             Pomodoro Focus
           </div>
           <div
             style={{
-              fontSize: 62,
+              display: 'flex',
+              fontSize: 58,
               fontWeight: 700,
               color: 'rgba(255,255,255,0.92)',
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
+              marginBottom: 20,
             }}
           >
-            Deep work,{'\n'}beautifully simple.
+            Deep work, beautifully simple.
           </div>
           <div
             style={{
+              display: 'flex',
               fontSize: 22,
               color: 'rgba(255,255,255,0.35)',
-              letterSpacing: '0.01em',
-              marginTop: 8,
+              marginBottom: 28,
             }}
           >
             Spotify · Google Calendar · Focus timer
           </div>
-
-          {/* Pill badges */}
-          <div style={{ display: 'flex', gap: 10, marginTop: 12 }}>
+          <div style={{ display: 'flex', gap: 10 }}>
             {['Focus Timer', 'Spotify', 'Google Calendar'].map((label) => (
               <div
                 key={label}
                 style={{
+                  display: 'flex',
                   background: 'rgba(255,255,255,0.06)',
                   border: '1px solid rgba(255,255,255,0.08)',
                   borderRadius: 999,
-                  padding: '6px 16px',
+                  padding: '6px 18px',
                   fontSize: 13,
                   color: 'rgba(255,255,255,0.45)',
                 }}
